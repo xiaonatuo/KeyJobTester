@@ -1,0 +1,24 @@
+tester:
+  # 设置任务组名称（执行器名称）
+  job-group-name: job-tester
+  # 设置任务cron表达式
+  job-cron: 0/5 * * * * ?
+  # 设置任务执行次数
+  job-run-num: 5
+  # 任务执行最大延时（毫秒）
+  job-run-max-time-diff: 3000
+
+xxl-job:
+  admin-addresses: http://172.16.36.41:8080/xxl-job-admin
+  access-token: default_token
+  # xxl-job executor appname
+  executor-appname: job-tester
+  # xxl-job executor registry-address: default use address to registry , otherwise use ip:port if address is null
+  executor-address:
+  # xxl-job executor server-info
+  executor-ip: 172.16.36.134
+  executor-port: 9999
+  #xxl-job executor log-path
+  executor-log-path: /data/applogs/xxl-job/jobhandler
+  #xxl-job executor log-retention-days
+  executor-log-retention-days: 30
