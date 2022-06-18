@@ -1,24 +1,24 @@
 tester:
-  # 设置任务组名称（执行器名称）
+  # 设置任务组名称（执行器名称），保证唯一
   job-group-name: job-tester
   # 设置任务cron表达式
   job-cron: 0/5 * * * * ?
   # 设置任务执行次数
-  job-run-num: 5
+  job-run-num: 3
   # 任务执行最大延时（毫秒）
   job-run-max-time-diff: 3000
 
 xxl-job:
+  # xxl-job-admin调度中心地址
   admin-addresses: http://172.16.36.41:8080/xxl-job-admin
+  # xxl-job内置Api调用的token，默认即可
   access-token: default_token
-  # xxl-job executor appname
-  executor-appname: job-tester
+  # xxl-job 执行器名称/任务组名称
+  executor-appname: ${tester.job-group-name}
   # xxl-job executor registry-address: default use address to registry , otherwise use ip:port if address is null
+  # 执行器注册到调度中心的地址，如：http://local-ip:port， 如果为空将使用executor-ip和executor-port
   executor-address:
-  # xxl-job executor server-info
+  # 执行器部署的主机IP地址，需要调度中西可以访问到
   executor-ip: 172.16.36.134
+  # 执行器部署的主机端口
   executor-port: 9999
-  #xxl-job executor log-path
-  executor-log-path: /data/applogs/xxl-job/jobhandler
-  #xxl-job executor log-retention-days
-  executor-log-retention-days: 30
